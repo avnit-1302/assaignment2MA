@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShoppingScreen extends StatefulWidget {
   const ShoppingScreen({Key? key}) : super(key: key);
@@ -12,20 +12,53 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
   final List<String> _shoppingNotes = [];
   final TextEditingController _controller = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    _loadShoppingNotes();
+  }
+
+  // Load saved shopping notes from shared preferences
+  Future<void> _loadShoppingNotes() async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String>? notes = prefs.getStringList('shoppingNotes');
+    if (notes != null) {
+      setState(() {
+        _shoppingNotes.addAll(notes);
+      });
+    }
+  }
+
+  // Save shopping notes to shared preferences
+  Future<void> _saveShoppingNotes() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('shoppingNotes', _shoppingNotes);
+  }
+
+  // Add new shopping note
   void _addShoppingNote() {
     if (_controller.text.isNotEmpty) {
       setState(() {
         _shoppingNotes.add(_controller.text);
-        _controller.clear(); // Clear the input after adding
+        _controller.clear();
+        _saveShoppingNotes(); // Save after adding
       });
     }
+  }
+
+  // Remove a shopping note and save the updated list
+  void _deleteShoppingNoteAt(int index) {
+    setState(() {
+      _shoppingNotes.removeAt(index);
+      _saveShoppingNotes(); // Save after removing
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping Notes'),
+        title: const Text('Shopping Notes'),
       ),
       body: Column(
         children: [
@@ -38,14 +71,13 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                     controller: _controller,
                     decoration: InputDecoration(
                       labelText: 'Enter item',
-                      border: OutlineInputBorder(),
+                      border: const OutlineInputBorder(),
                       labelStyle: TextStyle(color: Colors.white),
                     ),
-                    style: TextStyle(color: Colors.white),
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                   onPressed: _addShoppingNote,
                 ),
               ],
@@ -58,12 +90,8 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                 return ListTile(
                   title: Text(_shoppingNotes[index]),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      setState(() {
-                        _shoppingNotes.removeAt(index);
-                      });
-                    },
+                    icon: const Icon(Icons.delete),
+                    onPressed: () => _deleteShoppingNoteAt(index),
                   ),
                 );
               },
