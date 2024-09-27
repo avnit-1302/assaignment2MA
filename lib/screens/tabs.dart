@@ -5,6 +5,7 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
+import 'package:meals/screens/shopping.dart'; // Import the ShoppingScreen
 import 'package:meals/widgets/main_drawer.dart';
 
 const kInitialFilters = {
@@ -94,18 +95,23 @@ class _TabsScreenState extends State<TabsScreen> {
       return true;
     }).toList();
 
+    // Default page is CategoriesScreen
     Widget activePage = CategoriesScreen(
       onToggleFavorite: _toggleMealFavoriteStatus,
       availableMeals: availableMeals,
     );
     var activePageTitle = 'Categories';
 
+    // Change the page based on the selected index
     if (_selectedPageIndex == 1) {
       activePage = MealsScreen(
         meals: _favoriteMeals,
         onToggleFavorite: _toggleMealFavoriteStatus,
       );
       activePageTitle = 'Your Favorites';
+    } else if (_selectedPageIndex == 2) {
+      activePage = const ShoppingScreen(); // Use the new ShoppingScreen here
+      activePageTitle = 'Shopping Notes';
     }
 
     return Scaffold(
@@ -127,6 +133,10 @@ class _TabsScreenState extends State<TabsScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.star),
             label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.note_add),
+            label: 'Shopping Notes',
           ),
         ],
       ),
