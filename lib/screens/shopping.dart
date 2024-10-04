@@ -74,6 +74,7 @@ class _ShoppingScreenState extends State<ShoppingScreen> {
                       border: const OutlineInputBorder(),
                       labelStyle: TextStyle(color: Colors.white),
                     ),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
                 IconButton(
