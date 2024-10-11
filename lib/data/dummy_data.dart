@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:meals/models/category.dart';
 import 'package:meals/models/meal.dart';
 
+/// This file defines a list of available meal categories (availableCategories)
+/// and a list of dummy meals (dummyMeals) for use in the application.
+/// Each meal belongs to one or more categories, and includes details like
+/// title, ingredients, steps, duration, complexity, affordability, and dietary filters.
+
 // Constants in Dart should be written in lowerCamelcase.
 const availableCategories = [
   Category(

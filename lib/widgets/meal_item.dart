@@ -4,6 +4,12 @@ import 'package:transparent_image/transparent_image.dart';
 import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:meals/models/meal.dart';
 
+/// MealItem is a stateless widget that displays a meal in a card format.
+/// It shows the meal's image, title, duration, complexity, and affordability.
+/// The card is tappable and triggers the onSelectMeal callback when tapped.
+/// The widget uses FadeInImage for smooth image loading and MealItemTrait
+/// to display meal attributes like duration, complexity, and cost.
+
 class MealItem extends StatelessWidget {
   const MealItem({
     super.key,

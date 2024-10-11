@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// ShoppingScreen allows users to add, save, and delete shopping notes.
+/// Notes are stored locally using shared_preferences for persistence.
+/// The UI includes a text field for input, a list to display notes, and
+/// buttons to add and delete items. Notes are saved and loaded automatically.
 class ShoppingScreen extends StatefulWidget {
   const ShoppingScreen({Key? key}) : super(key: key);
 

@@ -1,3 +1,9 @@
+/// The Meal class represents a meal with various attributes such as
+/// title, ingredients, cooking steps, duration, complexity, affordability,
+/// and dietary preferences (gluten-free, lactose-free, vegan, vegetarian).
+/// It includes enums for Complexity and Affordability to categorize the meal's
+/// difficulty and cost level. Each meal belongs to one or more categories.
+
 enum Complexity {
   simple,
   challenging,

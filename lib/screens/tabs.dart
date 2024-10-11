@@ -15,6 +15,12 @@ const kInitialFilters = {
   Filter.vegan: false
 };
 
+/// TabsScreen provides a bottom navigation interface to switch between
+/// different pages: Categories, Favorites, and Shopping Notes.
+/// It manages user-selected filters for meals, favorite meals,
+/// and allows navigation to the FiltersScreen for filter customization.
+/// The ShoppingScreen is included for managing shopping notes.
+
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
 

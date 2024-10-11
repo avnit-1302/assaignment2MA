@@ -4,6 +4,12 @@ import 'package:meals/models/meal.dart';
 import 'package:meals/screens/meal_details.dart';
 import 'package:meals/widgets/meal_item.dart';
 
+/// MealsScreen displays a list of meals based on the selected category.
+/// If no meals are available, it shows a message prompting users to choose a different category.
+/// Tapping a meal navigates to the MealDetailsScreen to view the meal's details.
+/// The screen supports a title and allows marking meals as favorites via the onToggleFavorite callback.
+
+
 class MealsScreen extends StatelessWidget {
   const MealsScreen({
     super.key,

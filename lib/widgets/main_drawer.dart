@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// MainDrawer is a custom navigation drawer that provides options
+/// for navigating to different screens. It includes a header with
+/// a title and an icon, and two options for navigating to the 'Meals'
+/// or 'Filters' screens, triggering the onSelectScreen callback with an identifier.
+
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.onSelectScreen});
 

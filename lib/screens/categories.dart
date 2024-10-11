@@ -6,6 +6,10 @@ import 'package:meals/widgets/category_grid_item.dart';
 import 'package:meals/screens/meals.dart';
 import 'package:meals/models/category.dart';
 
+/// CategoriesScreen displays a grid of meal categories.
+/// Tapping a category filters available meals by that category
+/// and navigates to the MealsScreen. The screen supports
+/// favorite toggling functionality passed via onToggleFavorite.
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({
     super.key,

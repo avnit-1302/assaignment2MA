@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+/// MealItemTrait is a stateless widget that displays an icon and a label
+/// in a horizontal row. It is typically used to show traits or attributes
+/// of a meal, such as its duration or complexity, with the icon and label
+/// styled in white color.
+
 class MealItemTrait extends StatelessWidget {
   const MealItemTrait({
     super.key,

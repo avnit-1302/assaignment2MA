@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// import 'package:meals/screens/tabs.dart';
-// import 'package:meals/widgets/main_drawer.dart';
 
 enum Filter {
   glutenFree,
@@ -9,6 +7,11 @@ enum Filter {
   vegetarian,
   vegan,
 }
+
+/// FiltersScreen allows users to select dietary preferences using switches
+/// for gluten-free, lactose-free, vegetarian, and vegan options.
+/// The selected filters are passed back when navigating out of the screen.
+/// It uses the current filter settings provided as input to initialize.
 
 class FiltersScreen extends StatefulWidget {
   const FiltersScreen({super.key, required this.currentFilters});
@@ -42,18 +45,6 @@ class _FiltersScreenState extends State<FiltersScreen> {
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
-      // drawer: MainDrawer(
-      //   onSelectScreen: (identifier) {
-      //     Navigator.of(context).pop();
-      //     if (identifier == 'meals') {
-      //       Navigator.of(context).pushReplacement(
-      //         MaterialPageRoute(
-      //           builder: (ctx) => const TabsScreen(),
-      //         ),
-      //       );
-      //     }
-      //   },
-      // ),
       body: WillPopScope(
         onWillPop: () async {
           Navigator.of(context).pop({

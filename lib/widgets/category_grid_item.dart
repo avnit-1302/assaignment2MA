@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:meals/models/category.dart';
 
+/// CategoryGridItem is a stateless widget that displays a category in a
+/// stylized container with a gradient background. It reacts to user taps
+/// using an InkWell, triggering the onSelectCategory callback.
+/// The category title and color are used to customize the appearance.
+
 class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem({
     super.key,
